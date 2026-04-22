@@ -1,4 +1,4 @@
-import { db } from "../db/db";
+ import { db } from "../db/db";
 
 export const getReport = async () => {
   const rents = await db.rents.toArray();
