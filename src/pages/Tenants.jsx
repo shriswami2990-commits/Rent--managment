@@ -9,10 +9,16 @@ export default function Tenants() {
   }, []);
 
   return (
-    <div className="p-4">
-      <h1>Tenants</h1>
-      {tenants.map(t => (
-        <div key={t.id}>{t.name}</div>
+    <div className="p-4 pb-20">
+      <h1 className="text-xl font-bold">👤 Tenants</h1>
+
+      {tenants.map((t) => (
+        <div key={t.id} className="card">
+          <h2 className="font-bold">{t.name}</h2>
+          <p>Room: {t.room}</p>
+          <p>Mobile: {t.mobile}</p>
+          <p>Rate: ₹{t.unitRate}</p>
+        </div>
       ))}
     </div>
   );
