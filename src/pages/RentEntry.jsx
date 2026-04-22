@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTenants } from "../services/tenantService";
 import { generateRent } from "../services/rentService";
+import { sendWhatsApp } from "../services/whatsappService";
 
 export default function RentEntry() {
   const [tenants, setTenants] = useState([]);
@@ -29,11 +30,15 @@ export default function RentEntry() {
           />
 
           <button
-            onClick={() => handleGenerate(t, t.currentUnit)}
-            className="btn"
-          >
-            Generate Rent
-          </button>
+  onClick={async () => {
+    const rent = await handleGenerate(t, t.currentUnit);
+    sendWhatsApp(t, rent);
+  }}
+  className="btn bg-green-500"
+>
+  Generate & Send WhatsApp
+</button>
+      
         </div>
       ))}
     </div>
